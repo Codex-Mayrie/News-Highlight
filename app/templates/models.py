@@ -2,13 +2,13 @@ class Articles:
   """
   Class articles that show the objects in the article
   """
-  def __init__(self, source, description, title, url, author, urlToImage):
-    self.source = source
-    self.description = description
+  def __init__(self,title,description, url, author, urlToImage, publishedAt):
     self.title = title
+    self.description = description
     self.url = url
     self.author = author
     self. urlToImage = urlToImage
+    self.publishedAt = publishedAt
     
 class Sources:
   """
