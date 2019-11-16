@@ -1,0 +1,2 @@
+MOVIE_API_KEY='6e618bbf6b0840d69f59b04985d67b2c'
+SECRET_KEY='<Wanjiku Mburu Secret Key>'
