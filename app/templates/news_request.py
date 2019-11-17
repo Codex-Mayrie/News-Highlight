@@ -59,3 +59,77 @@ def process_new_sources(sources_list):
                 new_source = Sources(name,id,url,category,language,country, description)
         sources_results.append(new_source)
       return sources_results
+
+def get_articles(articles):
+  """
+  Function that will get the news articles
+  """
+  
+     articles_url = art_url.format(article, api_key)
+     with urllib.request.urlopen(articles_url) as url:
+       articles_data = url.read()
+       articles_response = json.loads(articles_data)
+       
+       articles_results = None
+       
+       if articles_response['articles']:
+         articles_results_items = articles_response['articles']
+         articles_results = process_new_articles(articles_results_items)
+    return articles_results
+
+def process_new_articles['articles_list']:
+  articles_results = []
+  
+  for one_article in articles_list:
+    title = one_article.get('title')
+    url = one_article.get('url')
+    description = one_article.get('description')
+    author = one_article.get('author')
+    urlToImage = one_article.get('urlToImage')
+    publishedAt = one_article.get('publishedAt')
+    new_article = Articles(title, url, description, author, urlToImage, publishedAt)
+    articles_results.append(new_article)
+  
+  return articles_results
+    
+def articles_source(source):
+  sources_url = 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey={}'.format(api_key, source)
+  
+  with urllib.request.urlopen(sources_url) as url:
+    art_data = url.read()
+    response = json.loads(art_data)
+    
+    source_articles = None
+    
+    if response['articles']
+    source_articles_list = response['articles']
+    source_articles = process_articles_source(list, source_articles)
+    return source_articles
+  
+def process_articles_source(articles_list):
+  source_articles = []
+  for article in articles_list:
+    title = article.get('title')
+    description = article.get('description')
+    url = article.get('url')
+    author = article.get('author')
+    urlToImage = article.get('urlToImage')
+    publishedAt = article.get('publishedAt')
+    
+    article_object = Articles(title,description, url, author, urlToImage, publishedAt)
+    source_articles.append(article_object)
+  return source_articles
+
+def search_articles(article_name):
+  search_url = art_url.format(api_key,article_name)
+  
+  with urllib.request.urlopen(search_url) as url:
+    search_data = url.read()
+    search_response = json.loads(search_data)
+    
+    search_results = None
+    
+       if search_response['articles']:
+            search_article_results = search_article_response['articles']
+            search_article_results = process_search(search_article_results)
+  return search_results
