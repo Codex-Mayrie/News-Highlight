@@ -77,7 +77,10 @@ def get_articles(articles):
          articles_results = process_new_articles(articles_results_items)
     return articles_results
 
-def process_new_articles['articles_list']:
+def process_new_articles(articles_list):
+  """
+  Function that processes the new articles and puts them in an array
+  """
   articles_results = []
   
   for one_article in articles_list:
@@ -93,6 +96,9 @@ def process_new_articles['articles_list']:
   return articles_results
     
 def articles_source(source):
+  """
+  Function that gets the articles source
+  """
   sources_url = 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey={}'.format(api_key, source)
   
   with urllib.request.urlopen(sources_url) as url:
@@ -107,6 +113,9 @@ def articles_source(source):
     return source_articles
   
 def process_articles_source(articles_list):
+  """
+  Function that processes the articles source
+  """
   source_articles = []
   for article in articles_list:
     title = article.get('title')
@@ -121,6 +130,9 @@ def process_articles_source(articles_list):
   return source_articles
 
 def search_articles(article_name):
+  """
+  Function that searches for the articles and returns results
+  """
   search_url = art_url.format(api_key,article_name)
   
   with urllib.request.urlopen(search_url) as url:
