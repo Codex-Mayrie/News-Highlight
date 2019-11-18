@@ -1,19 +1,19 @@
 {% macro display_new_sources(sources_results) %} {% for news in sources_results
 %}
-<div class="container">
-    <div class="col-md-6">
-  <div class="source-card">
-    <div class="card-header">
-      <h2><a href="/articles/{{news.id}}">{{news.name}}</a></h2>
-    </div>
-    <div class="card-body text-center">
-      <p class="description">{{news.description}}</p>
-      <a href="{{news.url}}"
-        ><button class="btn btn-sm btn-outline-info">Read Here</button></a
-      >
+<div class="container text-center">
+  <div class="col-md-6">
+    <div class="source-card">
+      <div class="card-header">
+        <h2>{{news.name}}</h2>
+      </div>
+      <div class="card-body text-center">
+        <p class="description">{{news.description}}</p>
+        <a href="{{news.url}}"
+          ><button class="btn btn-sm btn-outline-info">Read Here</button></a
+        >
+      </div>
     </div>
   </div>
-</div>
 </div>
 {% endfor %} {% endmacro %}
 
