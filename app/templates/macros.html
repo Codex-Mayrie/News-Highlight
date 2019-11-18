@@ -1,67 +1,48 @@
-{% macro display_new_sources(sources_results) %}
-<div class="container-fluid">
-   {% for news in sources_results %}
-   <div class="source-card">
-     <div class="card-header">
-       <h2><a href="/articles/{{news.id}}">{{news.name}}</a></h2>
-  </div>
-  <div class="card-body text-center">
-    <main class="description">
-      {{news.description}}
-    </main>
-    <a href="/articles/{{news.id}}"><button class="btn btn-sm btn-outline-info">Read Here</button></a>
-  </div>
-    {% endfor %}
+{% macro display_new_sources(sources_results) %} {% for news in sources_results
+%}
+<div class="container">
+    <div class="col-md-6">
+  <div class="source-card">
+    <div class="card-header">
+      <h2><a href="/articles/{{news.id}}">{{news.name}}</a></h2>
+    </div>
+    <div class="card-body text-center">
+      <p class="description">{{news.description}}</p>
+      <a href="{{news.url}}"
+        ><button class="btn btn-sm btn-outline-info">Read Here</button></a
+      >
+    </div>
   </div>
 </div>
-{% endmacro %} 
+</div>
+{% endfor %} {% endmacro %}
 
-<!-- Displaying articles in articles_outcome -->
+<!-- Displaying articles in articles_results -->
 
 {% macro display_new_articles(articles_results) %}
 <div class="container-fluid text-center">
-    {% for article in articles_results %}
-    <div class="articles-card">
-      <div class="card-header">
-        <h2> {{ article.title}} </h2>
-        <p> {{ article.article | truncate(30) }}</p>
-      </div>
-      <div class="card-body text-center">
-        <img src="{{article.urlToImage}}">
-        <p class="desc">
-          {{article.description}}
-        </p>
-        <p>Posted on: {{article.publishedAt | truncate(30)}} By: {{article.author | truncate(25)}}</p>
-      </div>
-      <div class="card-footer">
-          <a href="{{article.url}}"><button class="btn btn-sm btn-outline-info">See more</button></a> 
-     </div>
+  {% for article in articles_results %}
+  <div class="articles-card">
+    <div class="card-header">
+      <h2>{{ article.title}}</h2>
+      <p>{{ article.article | truncate(30) }}</p>
     </div>
-    {% endfor %}
-</div>
-{% endmacro %}
-
-<!---Displaying the source articles-->
-{% macro display_Source_articles(source_articles) %}
-<div class="container-fluid text-center">
-    <div class="row text-center" >
-        {% for article in source_articles %}
-            <div class="col-sm-3">
-                <div class="card details text-center">
-                    <img src="{{article.urlToImage}}" class="card-img">
-                </div>
-            </div>
-            <div class="col-sm-9">
-                <div class="card details">
-                    <div class="card-header text-center"><h3>{{article.title | truncate(43)}}</h3> </div>
-                    <div class="card-body text-center">
-                        <p class="desc">{{article.description}}</p>
-                        <p><a href="{{article.url}}">See more..</a></p>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+    <div class="card-body text-center">
+      <img src="{{article.urlToImage}}" />
+      <p class="desc">
+        {{article.description}}
+      </p>
+      <p>
+        Posted on: {{article.publishedAt | truncate(30)}} By: {{article.author |
+        truncate(25)}}
+      </p>
     </div>
+    <div class="card-footer">
+      <a href="{{article.url}}"
+        ><button class="btn btn-sm btn-outline-info">See more</button></a
+      >
+    </div>
+  </div>
+  {% endfor %}
 </div>
-
 {% endmacro %}

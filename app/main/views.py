@@ -1,5 +1,5 @@
-from flask import render_template, redirect,,request, url_for
-from ..request import get_sources, search_articles, get_articles, articles_source
+from flask import render_template, redirect,request, url_for
+from ..requests import get_sources, search_articles, get_articles, articles_source
 from .import main
 
 
@@ -15,7 +15,7 @@ def index():
   sports_news = get_sources('sports')
   health_news = get_sources('health')
   business_news = get_sources('business')
-    return render_template('index.html',general=general_news,sports=sports_news,health=health_news,business=business_news )
+  return render_template('index.html',general=general_news,sports=sports_news,health=health_news,business=business_news )
 
   
 
@@ -25,10 +25,9 @@ def sourceArticles(id):
   """
  A view sourceArticles page function that returns the sourceArticles details and its data
   """
-    all_articles = articles_source(id)
-    print(all_articles)
-    source = id
-    return render_template('articlessource.html', articles= all_articles, source =source)
+  all_articles = articles_source(id)
+  source = id
+  return render_template('articlessource.html', articles= all_articles, source =source)
   
   
 @main.route('/news-Articles')
@@ -39,10 +38,10 @@ def newsArticles():
     """
     science_articles = get_articles('science')
     entertainment_articles = get_articles('entertainment')
-     health_articles = get_articles('health')
+    health_articles = get_articles('health')
     return render_template('articles.html',science=science_articles, entertainment=entertainment_articles,health=health_articles)
   
-  @main.route('/article_Search/<article_name>')
+@main.route('/article_Search/<article_name>')
 def articleSearch(article_name):
   """
   A view function that searches for the articles by name and returns the searched article
