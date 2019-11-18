@@ -1,0 +1,42 @@
+{% macro display_new_sources(sources_results) %}
+<div class="container-fluid">
+   {% for news in sources_results %}
+   <div class="source-card">
+     <div class="card-header">
+       <h2><a href="/articles/{{news.id}}">{{news.name}}</a></h2>
+  </div>
+  <div class="card-body text-center">
+    <main class="description">
+      {{news.description}}
+    </main>
+    <a href="/articles/{{news.id}}"><button class="btn btn-sm btn-outline-info">Read Here</button></a>
+  </div>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %} 
+
+<!-- Displaying articles in articles_outcome -->
+
+{% macro display_new_articles(articles_results) %}
+<div class="container-fluid text-center">
+    {% for article in articles_results %}
+    <div class="articles-card">
+      <div class="card-header">
+        <h2> {{ article.title}} </h2>
+        <p> {{ article.article | truncate(30) }}</p>
+      </div>
+      <div class="card-body text-center">
+        <img src="{{article.urlToImage}}">
+        <p class="desc">
+          {{article.description}}
+        </p>
+        <p>Posted on: {{article.publishedAt | truncate(30)}} By: {{article.author | truncate(25)}}</p>
+      </div>
+      <div class="card-footer">
+          <a href="{{article.url}}"><button class="btn btn-sm btn-outline-info">See more</button></a> 
+     </div>
+    </div>
+    {% endfor %}
+</div>
+{% endmacro %}
