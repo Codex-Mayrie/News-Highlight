@@ -1,3 +1,7 @@
+
+<div class="container">
+<div class="row">
+
 {% macro display_new_sources(sources_results) %} {% for news in sources_results
 %}
 <div class="container text-center">
@@ -16,11 +20,12 @@
   </div>
 </div>
 {% endfor %} {% endmacro %}
-
+</div>
+</div>
 <!-- Displaying articles in articles_results -->
 
 {% macro display_new_articles(articles_results) %}
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" style="margin-top: 10em;">
   {% for article in articles_results %}
   <div class="articles-card">
     <div class="card-header">
